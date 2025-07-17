@@ -20,40 +20,16 @@
  "angular.ng-template"
       # "vscodevim.vim"
     ];
-    # Enable previews
     previews = {
       enable = true;
       previews = {
         web = {
-          command = [
- "npm"
- "run"
- "start"
- "--"
- "--port"
- "$PORT"
- "--host"
- "0.0.0.0"
- "--disable-host-check"
- ];
- manager = "web";
- };
+          # Command to serve files. This command uses Python's built-in HTTP server.
+          command = ["python3" "-m" "http.server" "$PORT"];
+          manager = "web"; # Use the 'web' manager for web previews
+        };
       };
     };
-    # Workspace lifecycle hooks
-    workspace = {
-      # Runs when a workspace is first created
-      onCreate = {
-        # Example: install JS dependencies from NPM
-        # npm-install = "npm install";
-        # Open editors for the following files by default, if they exist:
-        default.openFiles = [ ".idx/dev.nix" "README.md" ];
-      };
-      # Runs when the workspace is (re)started
-      onStart = {
-        # Example: start a background task to watch and re-build backend code
-        # watch-backend = "npm run watch-backend";
-      };
-    };
+    # Enable previews
   };
 }
